@@ -11,9 +11,10 @@ import mesosphere.marathon.client.model.v2.Group;
 
 import org.junit.Assert;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
-// @Ignore
+@Ignore
 public class MarathonClientIntegrationTest {
 
     private static final String GROUP_ID = "abc-123";
