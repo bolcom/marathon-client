@@ -2,6 +2,8 @@ package mesosphere.marathon.client.model.v2;
 
 import java.util.List;
 
+import mesosphere.marathon.client.utils.ModelUtils;
+
 public class GetGroupsResponse {
 
     private List<App> apps;
@@ -23,4 +25,9 @@ public class GetGroupsResponse {
         this.groups = groups;
     }
 
+    @Override
+    public String toString() {
+            return ModelUtils.toString(this);
+    }
+    
 }

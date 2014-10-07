@@ -2,6 +2,8 @@ package mesosphere.marathon.client.model.v2;
 
 import java.util.List;
 
+import mesosphere.marathon.client.utils.ModelUtils;
+
 public class Group {
 
     private String id;
@@ -32,4 +34,9 @@ public class Group {
         this.groups = groups;
     }
 
+    @Override
+    public String toString() {
+            return ModelUtils.toString(this);
+    }
+    
 }

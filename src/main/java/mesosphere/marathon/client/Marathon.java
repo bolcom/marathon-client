@@ -8,6 +8,7 @@ import mesosphere.marathon.client.model.v2.DeleteAppTasksResponse;
 import mesosphere.marathon.client.model.v2.GetAppResponse;
 import mesosphere.marathon.client.model.v2.GetAppTasksResponse;
 import mesosphere.marathon.client.model.v2.GetAppsResponse;
+import mesosphere.marathon.client.model.v2.GetGroupsResponse;
 import mesosphere.marathon.client.model.v2.GetTasksResponse;
 import mesosphere.marathon.client.model.v2.Group;
 import feign.RequestLine;
@@ -43,7 +44,7 @@ public interface Marathon {
 			@Named("task_id") String taskId, @Named("scale") String scale);
 
         @RequestLine("GET /v2/groups")
-        GetTasksResponse getGroups();
+        GetGroupsResponse getGroups();
 
         @RequestLine("GET /v2/groups/{groupId}")
         Group getGroup(@Named("groupId") String groupId);
@@ -57,6 +58,8 @@ public interface Marathon {
         @RequestLine("DELETE /v2/groups/{groupId}")
         void deleteGroup(@Named("groupId") String groupId);
 
+        @RequestLine("DELETE /v2/groups/{groupId}?force={force}")
+        void deleteGroup(@Named("groupId") String groupId,@Named("force") boolean force);
         
 	
 }
