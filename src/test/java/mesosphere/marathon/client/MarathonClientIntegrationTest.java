@@ -40,9 +40,9 @@ public class MarathonClientIntegrationTest {
         marathon.createGroup(createGroupWithApps(GROUP_ID, new String[] {APP_ID_1}));
         Assert.assertNotNull(getAppFromGroup(GROUP_ID, APP_ID_1));
         assertGroupExists(GROUP_ID);
-        marathon.updateGroup(GROUP_ID, createGroupWithApps(GROUP_ID, new String[] {APP_ID_1, APP_ID_2}));
+        marathon.updateGroup(GROUP_ID, createGroupWithApps(null, new String[] {APP_ID_1, APP_ID_2}));
         Assert.assertNotNull(getAppFromGroup(GROUP_ID, APP_ID_2));
-
+        Assert.assertNotNull(getAppFromGroup(GROUP_ID, APP_ID_1));
     }
     
     private void assertGroupExists(String groupId)
