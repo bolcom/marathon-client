@@ -1,9 +1,12 @@
 package mesosphere.marathon.client.model.v2;
 
+import java.util.List;
+
 public class Docker {
 
     private String image;
     private String network;
+    private List<PortMapping> portMappings;
 
     public String getImage() {
         return image;
@@ -20,6 +23,14 @@ public class Docker {
     public void setNetwork(String network) {
         this.network = network;
     }
+    
+    public List<PortMapping> getPortMappings() {
+        return portMappings;
+    }
+
+    public void setPortMappings(List<PortMapping> portMappings) {
+        this.portMappings = portMappings;
+    }
 
     @Override
     public int hashCode() {
@@ -27,6 +38,7 @@ public class Docker {
         int result = 1;
         result = prime * result + ((image == null) ? 0 : image.hashCode());
         result = prime * result + ((network == null) ? 0 : network.hashCode());
+        result = prime * result + ((portMappings == null) ? 0 : portMappings.hashCode());
         return result;
     }
 
@@ -49,7 +61,14 @@ public class Docker {
                 return false;
         } else if (!network.equals(other.network))
             return false;
+        if (portMappings == null) {
+            if (other.portMappings != null)
+                return false;
+        } else if (!portMappings.equals(other.portMappings))
+            return false;
         return true;
     }
+
+ 
 
 }
