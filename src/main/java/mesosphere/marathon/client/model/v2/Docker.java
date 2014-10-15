@@ -5,8 +5,10 @@ import java.util.List;
 public class Docker {
 
     private String image;
-    private String network;
+    private String network = BRIDGE;
     private List<PortMapping> portMappings;
+    
+    public static final String BRIDGE = "BRIDGE";
 
     public String getImage() {
         return image;

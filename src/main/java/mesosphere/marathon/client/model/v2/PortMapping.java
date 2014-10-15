@@ -2,8 +2,9 @@ package mesosphere.marathon.client.model.v2;
 
 public class PortMapping {
     private int containerPort;
-    private int hostPort;
-    private String protocol;
+    private int hostPort = 0;
+    private int servicePort = 0;
+    private String protocol = "tcp";
 
     public int getContainerPort() {
         return containerPort;
@@ -36,6 +37,7 @@ public class PortMapping {
         result = prime * result + containerPort;
         result = prime * result + hostPort;
         result = prime * result + ((protocol == null) ? 0 : protocol.hashCode());
+        result = prime * result + servicePort;
         return result;
     }
 
@@ -57,7 +59,11 @@ public class PortMapping {
                 return false;
         } else if (!protocol.equals(other.protocol))
             return false;
+        if (servicePort != other.servicePort)
+            return false;
         return true;
     }
+
+  
 
 }
