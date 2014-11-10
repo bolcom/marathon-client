@@ -54,6 +54,9 @@ public interface Marathon {
         
         @RequestLine("PUT /v2/groups/{groupId}")
         void updateGroup(@Named("groupId") String groupId, Group group);
+
+        @RequestLine("PUT /v2/groups/{groupId}?force={force}")
+        void updateGroup(@Named("groupId") String groupId, Group group,@Named("force") boolean force);
         
         @RequestLine("DELETE /v2/groups/{groupId}")
         void deleteGroup(@Named("groupId") String groupId);
