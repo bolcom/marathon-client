@@ -1,8 +1,8 @@
 package mesosphere.marathon.client.model.v2;
 
-import java.util.List;
-
 import mesosphere.marathon.client.utils.ModelUtils;
+
+import java.util.List;
 
 public class GetAppsResponse {
 	private List<App> apps;
@@ -19,5 +19,4 @@ public class GetAppsResponse {
 	public String toString() {
 		return ModelUtils.toString(this);
 	}
-
 }

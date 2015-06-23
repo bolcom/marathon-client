@@ -17,5 +17,4 @@ public class DeleteAppTaskResponse {
 	public String toString() {
 		return ModelUtils.toString(this);
 	}
-
 }

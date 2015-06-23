@@ -1,17 +1,9 @@
 package mesosphere.marathon.client;
 
-import javax.inject.Named;
-
-import mesosphere.marathon.client.model.v2.App;
-import mesosphere.marathon.client.model.v2.DeleteAppTaskResponse;
-import mesosphere.marathon.client.model.v2.DeleteAppTasksResponse;
-import mesosphere.marathon.client.model.v2.GetAppResponse;
-import mesosphere.marathon.client.model.v2.GetAppTasksResponse;
-import mesosphere.marathon.client.model.v2.GetAppsResponse;
-import mesosphere.marathon.client.model.v2.GetGroupsResponse;
-import mesosphere.marathon.client.model.v2.GetTasksResponse;
-import mesosphere.marathon.client.model.v2.Group;
 import feign.RequestLine;
+import mesosphere.marathon.client.model.v2.*;
+
+import javax.inject.Named;
 
 public interface Marathon {
 	@RequestLine("GET /v2/apps")
@@ -37,32 +29,30 @@ public interface Marathon {
 
 	@RequestLine("DELETE /v2/apps/{app_id}/tasks?host={host}&scale={scale}")
 	DeleteAppTasksResponse deleteAppTasks(@Named("app_id") String appId,
-			@Named("host") String host, @Named("scale") String scale);
+										  @Named("host") String host, @Named("scale") String scale);
 
 	@RequestLine("DELETE /v2/apps/{app_id}/tasks/{task_id}?scale={scale}")
 	DeleteAppTaskResponse deleteAppTask(@Named("app_id") String appId,
-			@Named("task_id") String taskId, @Named("scale") String scale);
+										@Named("task_id") String taskId, @Named("scale") String scale);
 
-        @RequestLine("GET /v2/groups")
-        GetGroupsResponse getGroups();
+	@RequestLine("GET /v2/groups")
+	GetGroupsResponse getGroups();
 
-        @RequestLine("GET /v2/groups/{groupId}")
-        Group getGroup(@Named("groupId") String groupId);
+	@RequestLine("GET /v2/groups/{groupId}")
+	Group getGroup(@Named("groupId") String groupId);
 
-        @RequestLine("POST /v2/groups/")
-        void createGroup(Group group);
-        
-        @RequestLine("PUT /v2/groups/{groupId}")
-        void updateGroup(@Named("groupId") String groupId, Group group);
+	@RequestLine("POST /v2/groups/")
+	void createGroup(Group group);
 
-        @RequestLine("PUT /v2/groups/{groupId}?force={force}")
-        void updateGroup(@Named("groupId") String groupId, Group group,@Named("force") boolean force);
-        
-        @RequestLine("DELETE /v2/groups/{groupId}")
-        void deleteGroup(@Named("groupId") String groupId);
+	@RequestLine("PUT /v2/groups/{groupId}")
+	void updateGroup(@Named("groupId") String groupId, Group group);
 
-        @RequestLine("DELETE /v2/groups/{groupId}?force={force}")
-        void deleteGroup(@Named("groupId") String groupId,@Named("force") boolean force);
-        
-	
+	@RequestLine("PUT /v2/groups/{groupId}?force={force}")
+	void updateGroup(@Named("groupId") String groupId, Group group, @Named("force") boolean force);
+
+	@RequestLine("DELETE /v2/groups/{groupId}")
+	void deleteGroup(@Named("groupId") String groupId);
+
+	@RequestLine("DELETE /v2/groups/{groupId}?force={force}")
+	void deleteGroup(@Named("groupId") String groupId, @Named("force") boolean force);
 }

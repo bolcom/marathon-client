@@ -1,8 +1,8 @@
 package mesosphere.marathon.client.model.v2;
 
-import java.util.*;
-
 import mesosphere.marathon.client.utils.ModelUtils;
+
+import java.util.*;
 
 public class App {
 	private String id;
@@ -172,114 +172,112 @@ public class App {
 		}
 		this.labels.put(key, value);
 	}
+
 	@Override
 	public String toString() {
 		return ModelUtils.toString(this);
 	}
 
-    @Override
-    public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + ((cmd == null) ? 0 : cmd.hashCode());
-        result = prime * result + ((constraints == null) ? 0 : constraints.hashCode());
-        result = prime * result + ((container == null) ? 0 : container.hashCode());
-        result = prime * result + ((cpus == null) ? 0 : cpus.hashCode());
-        result = prime * result + ((env == null) ? 0 : env.hashCode());
-        result = prime * result + ((executor == null) ? 0 : executor.hashCode());
-        result = prime * result + ((id == null) ? 0 : id.hashCode());
-        result = prime * result + ((instances == null) ? 0 : instances.hashCode());
-        result = prime * result + ((mem == null) ? 0 : mem.hashCode());
-        result = prime * result + ((ports == null) ? 0 : ports.hashCode());
-        result = prime * result + ((tasks == null) ? 0 : tasks.hashCode());
-        result = prime * result + ((tasksRunning == null) ? 0 : tasksRunning.hashCode());
-        result = prime * result + ((tasksStaged == null) ? 0 : tasksStaged.hashCode());
-        result = prime * result + ((uris == null) ? 0 : uris.hashCode());
-        return result;
-    }
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((cmd == null) ? 0 : cmd.hashCode());
+		result = prime * result + ((constraints == null) ? 0 : constraints.hashCode());
+		result = prime * result + ((container == null) ? 0 : container.hashCode());
+		result = prime * result + ((cpus == null) ? 0 : cpus.hashCode());
+		result = prime * result + ((env == null) ? 0 : env.hashCode());
+		result = prime * result + ((executor == null) ? 0 : executor.hashCode());
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime * result + ((instances == null) ? 0 : instances.hashCode());
+		result = prime * result + ((mem == null) ? 0 : mem.hashCode());
+		result = prime * result + ((ports == null) ? 0 : ports.hashCode());
+		result = prime * result + ((tasks == null) ? 0 : tasks.hashCode());
+		result = prime * result + ((tasksRunning == null) ? 0 : tasksRunning.hashCode());
+		result = prime * result + ((tasksStaged == null) ? 0 : tasksStaged.hashCode());
+		result = prime * result + ((uris == null) ? 0 : uris.hashCode());
+		return result;
+	}
 
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (obj == null)
-            return false;
-        if (getClass() != obj.getClass())
-            return false;
-        App other = (App) obj;
-        if (cmd == null) {
-            if (other.cmd != null)
-                return false;
-        } else if (!cmd.equals(other.cmd))
-            return false;
-        if (constraints == null) {
-            if (other.constraints != null)
-                return false;
-        } else if (!constraints.equals(other.constraints))
-            return false;
-        if (container == null) {
-            if (other.container != null)
-                return false;
-        } else if (!container.equals(other.container))
-            return false;
-        if (cpus == null) {
-            if (other.cpus != null)
-                return false;
-        } else if (!cpus.equals(other.cpus))
-            return false;
-        if (env == null) {
-            if (other.env != null)
-                return false;
-        } else if (!env.equals(other.env))
-            return false;
-        if (executor == null) {
-            if (other.executor != null)
-                return false;
-        } else if (!executor.equals(other.executor))
-            return false;
-        if (id == null) {
-            if (other.id != null)
-                return false;
-        } else if (!id.equals(other.id))
-            return false;
-        if (instances == null) {
-            if (other.instances != null)
-                return false;
-        } else if (!instances.equals(other.instances))
-            return false;
-        if (mem == null) {
-            if (other.mem != null)
-                return false;
-        } else if (!mem.equals(other.mem))
-            return false;
-        if (ports == null) {
-            if (other.ports != null)
-                return false;
-        } else if (!ports.equals(other.ports))
-            return false;
-        if (tasks == null) {
-            if (other.tasks != null)
-                return false;
-        } else if (!tasks.equals(other.tasks))
-            return false;
-        if (tasksRunning == null) {
-            if (other.tasksRunning != null)
-                return false;
-        } else if (!tasksRunning.equals(other.tasksRunning))
-            return false;
-        if (tasksStaged == null) {
-            if (other.tasksStaged != null)
-                return false;
-        } else if (!tasksStaged.equals(other.tasksStaged))
-            return false;
-        if (uris == null) {
-            if (other.uris != null)
-                return false;
-        } else if (!uris.equals(other.uris))
-            return false;
-        return true;
-    }
-	
-	
-
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		App other = (App) obj;
+		if (cmd == null) {
+			if (other.cmd != null)
+				return false;
+		} else if (!cmd.equals(other.cmd))
+			return false;
+		if (constraints == null) {
+			if (other.constraints != null)
+				return false;
+		} else if (!constraints.equals(other.constraints))
+			return false;
+		if (container == null) {
+			if (other.container != null)
+				return false;
+		} else if (!container.equals(other.container))
+			return false;
+		if (cpus == null) {
+			if (other.cpus != null)
+				return false;
+		} else if (!cpus.equals(other.cpus))
+			return false;
+		if (env == null) {
+			if (other.env != null)
+				return false;
+		} else if (!env.equals(other.env))
+			return false;
+		if (executor == null) {
+			if (other.executor != null)
+				return false;
+		} else if (!executor.equals(other.executor))
+			return false;
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
+			return false;
+		if (instances == null) {
+			if (other.instances != null)
+				return false;
+		} else if (!instances.equals(other.instances))
+			return false;
+		if (mem == null) {
+			if (other.mem != null)
+				return false;
+		} else if (!mem.equals(other.mem))
+			return false;
+		if (ports == null) {
+			if (other.ports != null)
+				return false;
+		} else if (!ports.equals(other.ports))
+			return false;
+		if (tasks == null) {
+			if (other.tasks != null)
+				return false;
+		} else if (!tasks.equals(other.tasks))
+			return false;
+		if (tasksRunning == null) {
+			if (other.tasksRunning != null)
+				return false;
+		} else if (!tasksRunning.equals(other.tasksRunning))
+			return false;
+		if (tasksStaged == null) {
+			if (other.tasksStaged != null)
+				return false;
+		} else if (!tasksStaged.equals(other.tasksStaged))
+			return false;
+		if (uris == null) {
+			if (other.uris != null)
+				return false;
+		} else if (!uris.equals(other.uris))
+			return false;
+		return true;
+	}
 }

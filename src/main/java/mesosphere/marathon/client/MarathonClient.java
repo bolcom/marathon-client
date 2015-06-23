@@ -1,13 +1,11 @@
 package mesosphere.marathon.client;
 
-import mesosphere.marathon.client.utils.ModelUtils;
 import feign.Feign;
 import feign.RequestInterceptor;
 import feign.RequestTemplate;
-import feign.Response;
-import feign.codec.ErrorDecoder;
 import feign.gson.GsonDecoder;
 import feign.gson.GsonEncoder;
+import mesosphere.marathon.client.utils.ModelUtils;
 
 public class MarathonClient {
 	static class MarathonHeadersInterceptor implements RequestInterceptor {
@@ -26,5 +24,4 @@ public class MarathonClient {
 				.errorDecoder(new MarathonErrorDecoder())
 				.target(Marathon.class, endpoint);
 	}
-
 }
