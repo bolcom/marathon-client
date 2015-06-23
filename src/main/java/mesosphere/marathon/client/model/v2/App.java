@@ -20,6 +20,9 @@ public class App {
 	private Collection<Task> tasks;
 	private Integer tasksStaged;
 	private Integer tasksRunning;
+	private Integer backoffSeconds;
+	private Double backoffFactor;
+	private Integer maxLaunchDelaySeconds;
 
 	public String getId() {
 		return id;
@@ -173,6 +176,30 @@ public class App {
 		this.labels.put(key, value);
 	}
 
+	public Integer getBackoffSeconds() {
+		return backoffSeconds;
+	}
+
+	public void setBackoffSeconds(Integer backoffSeconds) {
+		this.backoffSeconds = backoffSeconds;
+	}
+
+	public Double getBackoffFactor() {
+		return backoffFactor;
+	}
+
+	public void setBackoffFactor(Double backoffFactor) {
+		this.backoffFactor = backoffFactor;
+	}
+
+	public Integer getMaxLaunchDelaySeconds() {
+		return maxLaunchDelaySeconds;
+	}
+
+	public void setMaxLaunchDelaySeconds(Integer maxLaunchDelaySeconds) {
+		this.maxLaunchDelaySeconds = maxLaunchDelaySeconds;
+	}
+
 	@Override
 	public String toString() {
 		return ModelUtils.toString(this);
@@ -180,104 +207,52 @@ public class App {
 
 	@Override
 	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((cmd == null) ? 0 : cmd.hashCode());
-		result = prime * result + ((constraints == null) ? 0 : constraints.hashCode());
-		result = prime * result + ((container == null) ? 0 : container.hashCode());
-		result = prime * result + ((cpus == null) ? 0 : cpus.hashCode());
-		result = prime * result + ((env == null) ? 0 : env.hashCode());
-		result = prime * result + ((executor == null) ? 0 : executor.hashCode());
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		result = prime * result + ((instances == null) ? 0 : instances.hashCode());
-		result = prime * result + ((mem == null) ? 0 : mem.hashCode());
-		result = prime * result + ((ports == null) ? 0 : ports.hashCode());
-		result = prime * result + ((tasks == null) ? 0 : tasks.hashCode());
-		result = prime * result + ((tasksRunning == null) ? 0 : tasksRunning.hashCode());
-		result = prime * result + ((tasksStaged == null) ? 0 : tasksStaged.hashCode());
-		result = prime * result + ((uris == null) ? 0 : uris.hashCode());
+		int result = id != null ? id.hashCode() : 0;
+		result = 31 * result + (cmd != null ? cmd.hashCode() : 0);
+		result = 31 * result + (instances != null ? instances.hashCode() : 0);
+		result = 31 * result + (cpus != null ? cpus.hashCode() : 0);
+		result = 31 * result + (mem != null ? mem.hashCode() : 0);
+		result = 31 * result + (uris != null ? uris.hashCode() : 0);
+		result = 31 * result + (constraints != null ? constraints.hashCode() : 0);
+		result = 31 * result + (container != null ? container.hashCode() : 0);
+		result = 31 * result + (env != null ? env.hashCode() : 0);
+		result = 31 * result + (labels != null ? labels.hashCode() : 0);
+		result = 31 * result + (executor != null ? executor.hashCode() : 0);
+		result = 31 * result + (ports != null ? ports.hashCode() : 0);
+		result = 31 * result + (tasks != null ? tasks.hashCode() : 0);
+		result = 31 * result + (tasksStaged != null ? tasksStaged.hashCode() : 0);
+		result = 31 * result + (tasksRunning != null ? tasksRunning.hashCode() : 0);
+		result = 31 * result + (backoffSeconds != null ? backoffSeconds.hashCode() : 0);
+		result = 31 * result + (backoffFactor != null ? backoffFactor.hashCode() : 0);
+		result = 31 * result + (maxLaunchDelaySeconds != null ? maxLaunchDelaySeconds.hashCode() : 0);
 		return result;
 	}
 
 	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+
+		App app = (App) o;
+
+		if (id != null ? !id.equals(app.id) : app.id != null) return false;
+		if (cmd != null ? !cmd.equals(app.cmd) : app.cmd != null) return false;
+		if (instances != null ? !instances.equals(app.instances) : app.instances != null) return false;
+		if (cpus != null ? !cpus.equals(app.cpus) : app.cpus != null) return false;
+		if (mem != null ? !mem.equals(app.mem) : app.mem != null) return false;
+		if (uris != null ? !uris.equals(app.uris) : app.uris != null) return false;
+		if (constraints != null ? !constraints.equals(app.constraints) : app.constraints != null) return false;
+		if (container != null ? !container.equals(app.container) : app.container != null) return false;
+		if (env != null ? !env.equals(app.env) : app.env != null) return false;
+		if (labels != null ? !labels.equals(app.labels) : app.labels != null) return false;
+		if (executor != null ? !executor.equals(app.executor) : app.executor != null) return false;
+		if (ports != null ? !ports.equals(app.ports) : app.ports != null) return false;
+		if (tasks != null ? !tasks.equals(app.tasks) : app.tasks != null) return false;
+		if (tasksStaged != null ? !tasksStaged.equals(app.tasksStaged) : app.tasksStaged != null) return false;
+		if (tasksRunning != null ? !tasksRunning.equals(app.tasksRunning) : app.tasksRunning != null) return false;
+		if (backoffSeconds != null ? !backoffSeconds.equals(app.backoffSeconds) : app.backoffSeconds != null)
 			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		App other = (App) obj;
-		if (cmd == null) {
-			if (other.cmd != null)
-				return false;
-		} else if (!cmd.equals(other.cmd))
-			return false;
-		if (constraints == null) {
-			if (other.constraints != null)
-				return false;
-		} else if (!constraints.equals(other.constraints))
-			return false;
-		if (container == null) {
-			if (other.container != null)
-				return false;
-		} else if (!container.equals(other.container))
-			return false;
-		if (cpus == null) {
-			if (other.cpus != null)
-				return false;
-		} else if (!cpus.equals(other.cpus))
-			return false;
-		if (env == null) {
-			if (other.env != null)
-				return false;
-		} else if (!env.equals(other.env))
-			return false;
-		if (executor == null) {
-			if (other.executor != null)
-				return false;
-		} else if (!executor.equals(other.executor))
-			return false;
-		if (id == null) {
-			if (other.id != null)
-				return false;
-		} else if (!id.equals(other.id))
-			return false;
-		if (instances == null) {
-			if (other.instances != null)
-				return false;
-		} else if (!instances.equals(other.instances))
-			return false;
-		if (mem == null) {
-			if (other.mem != null)
-				return false;
-		} else if (!mem.equals(other.mem))
-			return false;
-		if (ports == null) {
-			if (other.ports != null)
-				return false;
-		} else if (!ports.equals(other.ports))
-			return false;
-		if (tasks == null) {
-			if (other.tasks != null)
-				return false;
-		} else if (!tasks.equals(other.tasks))
-			return false;
-		if (tasksRunning == null) {
-			if (other.tasksRunning != null)
-				return false;
-		} else if (!tasksRunning.equals(other.tasksRunning))
-			return false;
-		if (tasksStaged == null) {
-			if (other.tasksStaged != null)
-				return false;
-		} else if (!tasksStaged.equals(other.tasksStaged))
-			return false;
-		if (uris == null) {
-			if (other.uris != null)
-				return false;
-		} else if (!uris.equals(other.uris))
-			return false;
-		return true;
+		if (backoffFactor != null ? !backoffFactor.equals(app.backoffFactor) : app.backoffFactor != null) return false;
+		return !(maxLaunchDelaySeconds != null ? !maxLaunchDelaySeconds.equals(app.maxLaunchDelaySeconds) : app.maxLaunchDelaySeconds != null);
 	}
 }
