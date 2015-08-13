@@ -18,6 +18,7 @@ public class App {
 	private String executor;
 	private List<Integer> ports;
 	private Collection<Task> tasks;
+	private Collection<HealthCheck> healthChecks;
 	private Integer tasksStaged;
 	private Integer tasksRunning;
 	private Integer backoffSeconds;
@@ -198,6 +199,22 @@ public class App {
 
 	public void setMaxLaunchDelaySeconds(Integer maxLaunchDelaySeconds) {
 		this.maxLaunchDelaySeconds = maxLaunchDelaySeconds;
+	}
+
+	public Collection<HealthCheck> getHealthChecks() {
+		return healthChecks;
+	}
+
+	public void setHealthChecks(Collection<HealthCheck> healthChecks) {
+		this.healthChecks = healthChecks;
+	}
+
+	public void addHealthCheck( HealthCheck healthCheck ) {
+		if ( this.healthChecks == null ) {
+			this.healthChecks = new ArrayList<HealthCheck>();
+		}
+
+		this.healthChecks.add( healthCheck );
 	}
 
 	@Override
