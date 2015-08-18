@@ -3,6 +3,7 @@ package mesosphere.marathon.client.model.v2;
 import mesosphere.marathon.client.utils.ModelUtils;
 
 import java.util.Collection;
+import java.util.List;
 
 public class Task {
 	private String host;
@@ -11,6 +12,8 @@ public class Task {
 	private Collection<Integer> ports;
 	private String stagedAt;
 	private String startedAt;
+
+	private List<HealthCheckResult> healthCheckResults;
 
 	public String getHost() {
 		return host;
@@ -58,6 +61,14 @@ public class Task {
 
 	public void setStartedAt(String startedAt) {
 		this.startedAt = startedAt;
+	}
+
+	public List<HealthCheckResult> getHealthCheckResults() {
+		return healthCheckResults;
+	}
+
+	public void setHealthCheckResults(List<HealthCheckResult> healthCheckResults) {
+		this.healthCheckResults = healthCheckResults;
 	}
 
 	@Override
