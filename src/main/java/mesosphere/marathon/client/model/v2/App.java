@@ -7,6 +7,7 @@ import java.util.*;
 public class App {
 	private String id;
 	private String cmd;
+	private List args;
 	private Integer instances;
 	private Double cpus;
 	private Double mem;
@@ -215,6 +216,14 @@ public class App {
 		}
 
 		this.healthChecks.add( healthCheck );
+	}
+
+	public List getArgs() {
+		return args;
+	}
+
+	public void setArgs(List args) {
+		this.args = args;
 	}
 
 	@Override
