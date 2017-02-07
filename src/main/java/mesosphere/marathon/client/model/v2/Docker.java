@@ -3,12 +3,12 @@ package mesosphere.marathon.client.model.v2;
 import java.util.List;
 
 public class Docker {
+	public static final String BRIDGE = "BRIDGE";
 
 	private String image;
 	private String network = BRIDGE;
 	private List<PortMapping> portMappings;
-
-	public static final String BRIDGE = "BRIDGE";
+	private List<Parameter> parameters;
 
 	public String getImage() {
 		return image;
@@ -30,44 +30,38 @@ public class Docker {
 		return portMappings;
 	}
 
+	public List<Parameter> getParameters() {
+		return parameters;
+	}
+
+	public void setParameters(List<Parameter> parameters) {
+		this.parameters = parameters;
+	}
+
+
 	public void setPortMappings(List<PortMapping> portMappings) {
 		this.portMappings = portMappings;
 	}
 
 	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((image == null) ? 0 : image.hashCode());
-		result = prime * result + ((network == null) ? 0 : network.hashCode());
-		result = prime * result + ((portMappings == null) ? 0 : portMappings.hashCode());
-		return result;
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+
+		Docker docker = (Docker) o;
+
+		if (image != null ? !image.equals(docker.image) : docker.image != null) return false;
+		if (network != null ? !network.equals(docker.network) : docker.network != null) return false;
+		if (portMappings != null ? !portMappings.equals(docker.portMappings) : docker.portMappings != null) return false;
+		return parameters != null ? parameters.equals(docker.parameters) : docker.parameters == null;
 	}
 
 	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Docker other = (Docker) obj;
-		if (image == null) {
-			if (other.image != null)
-				return false;
-		} else if (!image.equals(other.image))
-			return false;
-		if (network == null) {
-			if (other.network != null)
-				return false;
-		} else if (!network.equals(other.network))
-			return false;
-		if (portMappings == null) {
-			if (other.portMappings != null)
-				return false;
-		} else if (!portMappings.equals(other.portMappings))
-			return false;
-		return true;
+	public int hashCode() {
+		int result = image != null ? image.hashCode() : 0;
+		result = 31 * result + (network != null ? network.hashCode() : 0);
+		result = 31 * result + (portMappings != null ? portMappings.hashCode() : 0);
+		result = 31 * result + (parameters != null ? parameters.hashCode() : 0);
+		return result;
 	}
 }

@@ -1,0 +1,16 @@
+{
+  "container": {
+    "docker": {
+      "network": "BRIDGE",
+      "parameters": [
+        {
+          "key": "rm",
+          "value": "true"
+        }
+      ]
+    }
+  },
+  "ipAddress": {
+    "networkName": "yo-network"
+  }
+}

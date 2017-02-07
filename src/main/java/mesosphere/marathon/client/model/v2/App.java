@@ -25,6 +25,7 @@ public class App {
 	private Integer backoffSeconds;
 	private Double backoffFactor;
 	private Integer maxLaunchDelaySeconds;
+	private IPAddress ipAddress;
 
 	public String getId() {
 		return id;
@@ -226,6 +227,14 @@ public class App {
 		this.args = args;
 	}
 
+	public IPAddress getIpAddress() {
+		return ipAddress;
+	}
+
+	public void setIpAddress(IPAddress ipAddress) {
+		this.ipAddress = ipAddress;
+	}
+
 	@Override
 	public String toString() {
 		return ModelUtils.toString(this);
@@ -251,6 +260,7 @@ public class App {
 		result = 31 * result + (backoffSeconds != null ? backoffSeconds.hashCode() : 0);
 		result = 31 * result + (backoffFactor != null ? backoffFactor.hashCode() : 0);
 		result = 31 * result + (maxLaunchDelaySeconds != null ? maxLaunchDelaySeconds.hashCode() : 0);
+		result = 31 * result + (ipAddress != null ? ipAddress.hashCode() : 0);
 		return result;
 	}
 
@@ -279,6 +289,7 @@ public class App {
 		if (backoffSeconds != null ? !backoffSeconds.equals(app.backoffSeconds) : app.backoffSeconds != null)
 			return false;
 		if (backoffFactor != null ? !backoffFactor.equals(app.backoffFactor) : app.backoffFactor != null) return false;
+		if (ipAddress != null ? !ipAddress.equals(app.ipAddress) : app.ipAddress!= null) return false;
 		return !(maxLaunchDelaySeconds != null ? !maxLaunchDelaySeconds.equals(app.maxLaunchDelaySeconds) : app.maxLaunchDelaySeconds != null);
 	}
 }
