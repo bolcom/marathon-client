@@ -1,7 +1,5 @@
 package mesosphere.marathon.client.model.v2;
 
-import java.util.Date;
-
 public class HealthCheckResult {
 
 	private boolean alive;

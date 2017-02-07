@@ -1,7 +1,7 @@
 {
   "container": {
     "docker": {
-      "network": "BRIDGE",
+      "network": "USER",
       "parameters": [
         {
           "key": "rm",

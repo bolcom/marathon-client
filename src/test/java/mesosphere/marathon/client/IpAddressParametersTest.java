@@ -10,7 +10,7 @@ import org.junit.Test;
 import java.io.File;
 import java.io.IOException;
 import java.nio.charset.Charset;
-import java.util.Arrays;
+import java.util.Collections;
 
 // Test that ensure encoding of ipAddress and Docker parameters works as expected
 public class IpAddressParametersTest {
@@ -41,7 +41,7 @@ public class IpAddressParametersTest {
 
 		app.setContainer(new Container());
 		app.getContainer().setDocker(new Docker());
-		app.getContainer().getDocker().setParameters(Arrays.asList(p));
+		app.getContainer().getDocker().setParameters(Collections.singletonList(p));
 		app.setIpAddress(new IPAddress());
 		app.getIpAddress().setNetworkName("yo-network");
 
