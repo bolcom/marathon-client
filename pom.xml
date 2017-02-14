@@ -4,7 +4,7 @@
 	<groupId>com.github.mohitsoni</groupId>
 	<artifactId>marathon-client</artifactId>
 	<packaging>jar</packaging>
-	<version>0.4.2-boldpi-9</version>
+	<version>0.4.2-boldpi-10</version>
 	<name>marathon-client</name>
 	<description>A Java API client for Mesosphere's Marathon.</description>
 	<url>https://github.com/mohitsoni/marathon-client</url>

@@ -9,6 +9,7 @@ public class Task {
 	private String host;
 	private String id;
 	private String appId;
+	private String state;
 	private Collection<Integer> ports;
 	private String stagedAt;
 	private String startedAt;
@@ -71,7 +72,15 @@ public class Task {
 		this.healthCheckResults = healthCheckResults;
 	}
 
-	@Override
+	public String getState() {
+            return state;
+        }
+    
+        public void setState(String state) {
+            this.state = state;
+        }
+    
+        @Override
 	public String toString() {
 		return ModelUtils.toString(this);
 	}
