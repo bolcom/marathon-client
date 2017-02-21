@@ -11,6 +11,7 @@ public class Task {
 	private String appId;
 	private String state;
 	private Collection<Integer> ports;
+	private List<IPAddress> ipAddresses;
 	private String stagedAt;
 	private String startedAt;
 
@@ -80,8 +81,18 @@ public class Task {
             this.state = state;
         }
     
+        
+        
+        public List<IPAddress> getIpAddresses() {
+            return ipAddresses;
+        }
+
+        public void setIpAddresses(List<IPAddress> ipAddresses) {
+            this.ipAddresses = ipAddresses;
+        }
+
         @Override
 	public String toString() {
-		return ModelUtils.toString(this);
-	}
+        return ModelUtils.toString(this);
+    }
 }

@@ -1,0 +1,17 @@
+{
+  "id": "task-1234",
+  "slaveId": "slave-12345",
+  "host": "host",
+  "state": "TASK_RUNNING",
+  "startedAt": "2017-02-21T11:06:53.828Z",
+  "stagedAt": "2017-02-21T11:06:51.919Z",
+  "ports": [],
+  "version": "2017-02-21T11:06:48.813Z",
+  "ipAddresses": [
+    {
+      "ipAddress": "10.10.0.1",
+      "protocol": "IPv4"
+    }
+  ],
+  "appId": "/task1234"
+}

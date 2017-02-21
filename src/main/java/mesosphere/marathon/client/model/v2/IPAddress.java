@@ -1,7 +1,9 @@
 package mesosphere.marathon.client.model.v2;
 
 public class IPAddress {
-	private String networkName;
+        private String networkName;
+        private String ipAddress;
+	private String protocol;
 
 	public String getNetworkName() {
 		return networkName;
@@ -11,23 +13,24 @@ public class IPAddress {
 		this.networkName = networkName;
 	}
 
-	@Override
-	public String toString() {
-		return "networkName: " + networkName;
-	}
+        public String getIpAddress() {
+            return ipAddress;
+        }
+    
+        public void setIpAddress(String ipAddress) {
+            this.ipAddress = ipAddress;
+        }
+    
+        public String getProtocol() {
+            return protocol;
+        }
+    
+        public void setProtocol(String protocol) {
+            this.protocol = protocol;
+        }
 
-	@Override
-	public boolean equals(Object o) {
-		if (this == o) return true;
-		if (o == null || getClass() != o.getClass()) return false;
-
-		IPAddress ipAddress = (IPAddress) o;
-
-		return networkName != null ? networkName.equals(ipAddress.networkName) : ipAddress.networkName == null;
-	}
-
-	@Override
-	public int hashCode() {
-		return networkName != null ? networkName.hashCode() : 0;
-	}
+        @Override
+        public String toString() {
+            return "IPAddress [networkName=" + networkName + ", ipAddress=" + ipAddress + ", protocol=" + protocol + "]";
+        }
 }
