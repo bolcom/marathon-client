@@ -7,6 +7,7 @@ public class HealthCheck {
 	private int gracePeriodSeconds;
 	private int intervalSeconds;
 	private int portIndex;
+	private int port;
 	private int timeoutSeconds;
 	private int maxConsecutiveFailures;
 
@@ -65,8 +66,18 @@ public class HealthCheck {
 	public void setMaxConsecutiveFailures(int maxConsecutiveFailures) {
 		this.maxConsecutiveFailures = maxConsecutiveFailures;
 	}
+	
+	
 
-	@Override
+	public int getPort() {
+            return port;
+        }
+    
+        public void setPort(int port) {
+            this.port = port;
+        }
+
+        @Override
 	public boolean equals(Object o) {
 		if (this == o) return true;
 		if (o == null || getClass() != o.getClass()) return false;
@@ -76,6 +87,7 @@ public class HealthCheck {
 		if (gracePeriodSeconds != that.gracePeriodSeconds) return false;
 		if (intervalSeconds != that.intervalSeconds) return false;
 		if (portIndex != that.portIndex) return false;
+		if (port != that.port) return false;
 		if (timeoutSeconds != that.timeoutSeconds) return false;
 		if (maxConsecutiveFailures != that.maxConsecutiveFailures) return false;
 		if (protocol != null ? !protocol.equals(that.protocol) : that.protocol != null) return false;
@@ -90,6 +102,7 @@ public class HealthCheck {
 		result = 31 * result + gracePeriodSeconds;
 		result = 31 * result + intervalSeconds;
 		result = 31 * result + portIndex;
+		result = 31 * result + port;
 		result = 31 * result + timeoutSeconds;
 		result = 31 * result + maxConsecutiveFailures;
 		return result;
