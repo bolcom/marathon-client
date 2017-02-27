@@ -6,8 +6,8 @@ public class HealthCheck {
 	private String path;
 	private int gracePeriodSeconds;
 	private int intervalSeconds;
-	private int portIndex;
-	private int port;
+	private Integer portIndex;
+	private Integer port;
 	private int timeoutSeconds;
 	private int maxConsecutiveFailures;
 
@@ -43,13 +43,6 @@ public class HealthCheck {
 		this.intervalSeconds = intervalSeconds;
 	}
 
-	public int getPortIndex() {
-		return portIndex;
-	}
-
-	public void setPortIndex(int portIndex) {
-		this.portIndex = portIndex;
-	}
 
 	public int getTimeoutSeconds() {
 		return timeoutSeconds;
@@ -67,44 +60,21 @@ public class HealthCheck {
 		this.maxConsecutiveFailures = maxConsecutiveFailures;
 	}
 	
-	
-
-	public int getPort() {
+        public Integer getPortIndex() {
+            return portIndex;
+        }
+    
+        public void setPortIndex(Integer portIndex) {
+            this.portIndex = portIndex;
+        }
+    
+        public Integer getPort() {
             return port;
         }
     
-        public void setPort(int port) {
+        public void setPort(Integer port) {
             this.port = port;
         }
 
-        @Override
-	public boolean equals(Object o) {
-		if (this == o) return true;
-		if (o == null || getClass() != o.getClass()) return false;
 
-		HealthCheck that = (HealthCheck) o;
-
-		if (gracePeriodSeconds != that.gracePeriodSeconds) return false;
-		if (intervalSeconds != that.intervalSeconds) return false;
-		if (portIndex != that.portIndex) return false;
-		if (port != that.port) return false;
-		if (timeoutSeconds != that.timeoutSeconds) return false;
-		if (maxConsecutiveFailures != that.maxConsecutiveFailures) return false;
-		if (protocol != null ? !protocol.equals(that.protocol) : that.protocol != null) return false;
-		return !(path != null ? !path.equals(that.path) : that.path != null);
-
-	}
-
-	@Override
-	public int hashCode() {
-		int result = protocol != null ? protocol.hashCode() : 0;
-		result = 31 * result + (path != null ? path.hashCode() : 0);
-		result = 31 * result + gracePeriodSeconds;
-		result = 31 * result + intervalSeconds;
-		result = 31 * result + portIndex;
-		result = 31 * result + port;
-		result = 31 * result + timeoutSeconds;
-		result = 31 * result + maxConsecutiveFailures;
-		return result;
-	}
 }
